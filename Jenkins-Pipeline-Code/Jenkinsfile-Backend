@@ -27,8 +27,8 @@ pipeline {
                 dir('Application-Code/backend') {
                     withSonarQubeEnv('sonar-server') {
                         sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=three-tier-backend \
-                        -Dsonar.projectKey=three-tier-backend '''
+                        -Dsonar.projectName=navitas-backend-app \
+                        -Dsonar.projectKey=navitas-backend-app '''
                     }
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
         stage('Quality Check') {
             steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token' 
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-key' 
                 }
             }
         }
