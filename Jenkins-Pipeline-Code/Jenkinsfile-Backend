@@ -82,7 +82,8 @@ pipeline {
         }
         stage('Checkout Code') {
             steps {
-                git credentialsId: 'GITHUB', url: 'https://github.com/protosaditya21/webapp-demo.git'
+                // git credentialsId: 'GITHUB', url: 'https://github.com/protosaditya21/webapp-demo.git'
+                git branch: 'main', credentialsId: 'github-key', url: 'https://github.com/protosaditya21/webapp-demo.git'
             }
         }
         stage('Update Deployment file') {
